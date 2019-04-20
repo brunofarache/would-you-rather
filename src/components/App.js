@@ -3,21 +3,18 @@ import './App.css';
 
 import React, { Component } from 'react';
 import { Card, CardDeck } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-import { _getUsers } from '../api/_DATA';
+import { handleInitialData } from '../actions/shared';
 
 class App extends Component {
-	state = {
-		users: {}
-	}
-
 	componentDidMount() {
-		_getUsers()
-			.then((users) => this.setState({ users }));
+		const { dispatch } = this.props;
+		dispatch(handleInitialData());
 	}
 
 	render() {
-		const { users } = this.state;
+		const { users } = this.props;
 
 		return (
 			<div className='sign-in'>
@@ -36,4 +33,10 @@ class App extends Component {
 	}
 }
 
-export default App;
+function mapStateToProps ({ users }) {
+	return {
+		users
+	}
+}
+
+export default connect(mapStateToProps)(App);
