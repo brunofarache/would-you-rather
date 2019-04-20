@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import logo from './logo.svg';
 import './App.css';
-import { Button, ListGroup } from 'react-bootstrap';
+import { Card, CardDeck } from 'react-bootstrap';
 
 import { _getUsers } from './_DATA';
 
@@ -20,18 +19,17 @@ class App extends Component {
 		const { users } = this.state;
 
 		return (
-			<div>
-				<ListGroup>
-					{Object.keys(users).map((key) => (
-						<ListGroup.Item
-							action key={key}
-							href={`#${key}`}>
-
-							{key}
-						</ListGroup.Item>
+			<div className='sign-in'>
+				<CardDeck>
+					{Object.values(users).map((user) => (
+						<Card key={user.id}>
+							<Card.Img variant="top" src={user.avatarURL} />
+							<Card.Body>
+								<Card.Text>{user.id}</Card.Text>
+							</Card.Body>
+						</Card>
 					))}
-				</ListGroup>
-				<Button>Sign In</Button>
+				</CardDeck>
 			</div>
 		);
 	}
