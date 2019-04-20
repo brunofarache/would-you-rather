@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+
+import React, { Component } from 'react';
 import { Card, CardDeck } from 'react-bootstrap';
 
-import { _getUsers } from './_DATA';
+import { _getUsers } from '../api/_DATA';
 
 class App extends Component {
 	state = {
