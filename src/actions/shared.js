@@ -5,12 +5,12 @@ import { receiveUsers } from './users';
 
 export function handleInitialData() {
     return (dispatch) => {
-        dispatch(showLoading())
+        dispatch(showLoading());
 
         return getInitialData()
             .then(({ users }) => {
                 dispatch(receiveUsers(users));
-                dispatch(hideLoading())
-            })
+                dispatch(hideLoading());
+            });
     }
 }

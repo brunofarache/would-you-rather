@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Nav, Navbar } from 'react-bootstrap';
+import { Button, Image, Nav, Navbar } from 'react-bootstrap';
+
+import { signOut } from '../actions/authedUser';
 
 class Header extends Component {
+    handleSignOut = () => {
+        const { dispatch } = this.props;
+		dispatch(signOut());
+    }
+
     render() {
+        const { user } = this.props;
+
 		return (
             <Navbar bg="light" expand="lg">
                 <Navbar.Brand href="#home">Would You Rather?</Navbar.Brand>
@@ -14,11 +23,18 @@ class Header extends Component {
                         <Nav.Link href="#add">New Question</Nav.Link>
                         <Nav.Link href="#link">Leaderboard</Nav.Link>
                     </Nav>
-                    <Button variant="outline-success">Sign Out</Button>
+                    <Image src={user.avatarURL} style={{ height: '34px', marginRight: '12px'}} roundedCircle />
+                    <Button variant="outline-success" onClick={this.handleSignOut}>Sign Out</Button>
                 </Navbar.Collapse>
             </Navbar>
         );
     }
 }
 
-export default connect()(Header);
+function mapStateToProps({ authedUser, users }) {
+	return {
+		user: users[authedUser]
+	}
+}
+
+export default connect(mapStateToProps)(Header);

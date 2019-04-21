@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardDeck } from 'react-bootstrap';
 
+import { signIn } from '../actions/authedUser';
+
 class SignIn extends Component {
+    handleSignIn = (userId) => {
+        const { dispatch } = this.props;
+		dispatch(signIn(userId));
+    }
+
     render() {
         const { users } = this.props;
 
@@ -10,7 +17,10 @@ class SignIn extends Component {
             <div className='sign-in'>
                 <CardDeck>
                     {Object.values(users).map((user) => (
-                        <Card key={user.id}>
+                        <Card
+                            key={user.id}
+                            onClick={() => this.handleSignIn(user.id)}>
+
                             <Card.Img variant="top" src={user.avatarURL} />
                             <Card.Body>
                                 <Card.Text>{user.id}</Card.Text>

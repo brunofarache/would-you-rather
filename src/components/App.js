@@ -16,14 +16,26 @@ class App extends Component {
 	}
 
 	render() {
+		const { signedIn } = this.props;
+
 		return (
 			<div>
-				<Header />
+				{signedIn && (
+					<Header />
+				)}
 				<LoadingBar />
-				<SignIn />
+				{!signedIn && (
+					<SignIn />
+				)}
 			</div>
 		);
 	}
 }
 
-export default connect()(App);
+function mapStateToProps({ authedUser }) {
+	return {
+		signedIn: (authedUser !== null)
+	}
+}
+
+export default connect(mapStateToProps)(App);
