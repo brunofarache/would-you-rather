@@ -15,7 +15,14 @@ class Header extends Component {
 
 		return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">Would You Rather?</Navbar.Brand>
+                <Navbar.Brand href="#home">
+                    <Image
+                        src={user.avatarURL}
+                        className="d-inline-block align-top"
+                        style={{ height: '30px', marginRight: '8px'}} 
+                        roundedCircle />
+                        {`${user.name}`}
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -23,7 +30,6 @@ class Header extends Component {
                         <Nav.Link href="#add">New Question</Nav.Link>
                         <Nav.Link href="#link">Leaderboard</Nav.Link>
                     </Nav>
-                    <Image src={user.avatarURL} style={{ height: '34px', marginRight: '12px'}} roundedCircle />
                     <Button variant="outline-success" onClick={this.handleSignOut}>Sign Out</Button>
                 </Navbar.Collapse>
             </Navbar>
