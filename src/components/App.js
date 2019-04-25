@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading-bar'
 
 import Header from './Header';
+import Home from './Home';
 import SignIn from './SignIn';
 import { handleInitialData } from '../actions/shared';
 
@@ -21,7 +22,10 @@ class App extends Component {
 		return (
 			<div>
 				{signedIn && (
-					<Header />
+					<div>
+						<Header />
+						<Home />
+					</div>
 				)}
 				<LoadingBar />
 				{!signedIn && (
