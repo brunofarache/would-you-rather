@@ -16,7 +16,6 @@ class Question extends Component {
 	}
 
 	handleChange = (event) => {
-		console.log(event.currentTarget.id);
 		this.setState({ vote: event.currentTarget.id })
 	}
 
