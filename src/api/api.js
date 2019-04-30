@@ -10,5 +10,5 @@ export function getInitialData() {
 	]).then(([users, questions]) => ({
 		users,
 		questions
-	}))
+	}));
 }

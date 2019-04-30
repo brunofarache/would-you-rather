@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, Form } from 'react-bootstrap';
 
-import { addVote } from "../actions/questions";
+import { handleVote } from "../actions/questions";
 
 class Question extends Component {
 	state = {
@@ -12,7 +12,7 @@ class Question extends Component {
 	handleVote = (event) => {
 		event.preventDefault();
 		const { authedUser, dispatch, question } = this.props;
-		dispatch(addVote(authedUser, question.id, this.state.vote));
+		dispatch(handleVote(authedUser, question.id, this.state.vote));
 	}
 
 	handleChange = (event) => {
