@@ -7,7 +7,7 @@ class QuestionsList extends Component {
         const { questions, users } = this.props;
 
         return (
-            <CardDeck>
+            <CardDeck style={{ padding: '40px'}}>
                 {questions.map(question => (
                     <Card key={question.id} style={{ width: '178px'}}>
                         <Card.Img
@@ -15,7 +15,7 @@ class QuestionsList extends Component {
                             style={{ height: '178px', width: '178px'}}
                             src={users[question.author].avatarURL} />
                         <Card.Body>
-                            <Card.Title>{users[question.author].name} asks:</Card.Title>
+                            <Card.Title>Would You Rather?</Card.Title>
                             <Card.Text>
                                 {question.optionOne.text} or {question.optionTwo.text}
                             </Card.Text>

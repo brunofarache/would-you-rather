@@ -9,12 +9,16 @@ class Home extends Component {
 		const { answeredQuestions, unansweredQuestions, users } = this.props;
 
 		return (
-			<Tabs defaultActiveKey="answered">
-				<Tab eventKey="answered" title="Answered Questions">
-					<QuestionsList questions={answeredQuestions} users={users} />
-				</Tab>
+			<Tabs defaultActiveKey="unanswered">
 				<Tab eventKey="unanswered" title="Unanswered Questions">
-					<QuestionsList questions={unansweredQuestions} users={users} />
+					<QuestionsList
+						questions={unansweredQuestions}
+						users={users} />
+				</Tab>
+				<Tab eventKey="answered" title="Answered Questions">
+					<QuestionsList
+						questions={answeredQuestions} 
+						users={users} />
 				</Tab>
 			</Tabs>
 		);
