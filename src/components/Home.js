@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Tab, Tabs } from 'react-bootstrap';
+
+import QuestionsList from "./QuestionsList.js";
 
 class Home extends Component {
 	render() {
-		const { answeredQuestions, unansweredQuestions } = this.props;
+		const { answeredQuestions, unansweredQuestions, users } = this.props;
 
 		return (
-			<div>
-				answered:
-				{answeredQuestions.map(question => (
-					<h2 key={question.id}>{question.optionOne.text}	</h2>
-				))}
-
-				unanswered:
-				{unansweredQuestions.map(question => (
-					<h2 key={question.id}>{question.optionOne.text}</h2>
-				))}
-			</div>
+			<Tabs defaultActiveKey="answered">
+				<Tab eventKey="answered" title="Answered Questions">
+					<QuestionsList questions={answeredQuestions} users={users} />
+				</Tab>
+				<Tab eventKey="unanswered" title="Unanswered Questions">
+					<QuestionsList questions={unansweredQuestions} users={users} />
+				</Tab>
+			</Tabs>
 		);
 	}
 }
@@ -36,7 +36,8 @@ function mapStateToProps({ authedUser, questions, users }) {
 
 	return {
 		answeredQuestions,
-		unansweredQuestions
+		unansweredQuestions,
+		users
 	}
 }
 

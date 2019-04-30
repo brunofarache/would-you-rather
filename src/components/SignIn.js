@@ -14,7 +14,7 @@ class SignIn extends Component {
         const { users } = this.props;
 
 		return (
-            <div className='sign-in'>
+            <div className='content'>
                 <CardDeck>
                     {Object.values(users).map((user) => (
                         <Card
