@@ -3,7 +3,7 @@ import './App.css';
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LoadingBar from 'react-redux-loading-bar'
+import LoadingBar from 'react-redux-loading-bar';
 
 import Header from './Header';
 import Home from './Home';

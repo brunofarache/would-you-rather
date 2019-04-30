@@ -26,9 +26,9 @@ class Header extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#add">New Question</Nav.Link>
-                        <Nav.Link href="#link">Leaderboard</Nav.Link>
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/add">New Question</Nav.Link>
+                        <Nav.Link href="/leaderboard">Leaderboard</Nav.Link>
                     </Nav>
                     <Button variant="outline-success" onClick={this.handleSignOut}>Sign Out</Button>
                 </Navbar.Collapse>
