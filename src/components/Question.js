@@ -11,8 +11,9 @@ class Question extends Component {
 
 	handleVote = (event) => {
 		event.preventDefault();
-		const { authedUser, dispatch, question } = this.props;
+		const { authedUser, dispatch, history, question } = this.props;
 		dispatch(handleVote(authedUser, question.id, this.state.vote));
+		history.push('/');
 	}
 
 	handleChange = (event) => {

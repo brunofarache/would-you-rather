@@ -23,9 +23,7 @@ export function receiveQuestions(questions) {
 
 export function handleVote(authedUser, qid, answer) {
     return (dispatch) => {
-        return _saveQuestionAnswer({authedUser, qid, answer})
-            .then(() => {
-                dispatch(addVote(authedUser, qid, answer));
-            });
+        dispatch(addVote(authedUser, qid, answer));
+        return _saveQuestionAnswer({authedUser, qid, answer}).then();
     }
 }
