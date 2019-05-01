@@ -5,6 +5,7 @@ import { Tab, Tabs } from 'react-bootstrap';
 import { Route, Switch } from "react-router-dom";
 
 import AddQuestion from "./AddQuestion.js";
+import Leaderboard from './Leaderboard.js';
 import Question from "./Question.js";
 import QuestionsList from "./QuestionsList.js";
 
@@ -36,6 +37,7 @@ class Home extends Component {
 				} />
 				<Route path='/questions/:id' component={Question} />
 				<Route path='/add' component={AddQuestion} />
+				<Route path='/leaderboard' component={Leaderboard} />
 			</Switch>
 		);
 	}
