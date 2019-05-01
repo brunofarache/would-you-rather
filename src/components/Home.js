@@ -4,6 +4,7 @@ import { Tab, Tabs } from 'react-bootstrap';
 
 import { Route, Switch } from "react-router-dom";
 
+import AddQuestion from "./AddQuestion.js";
 import Question from "./Question.js";
 import QuestionsList from "./QuestionsList.js";
 
@@ -15,12 +16,18 @@ class Home extends Component {
 			<Switch>
 				<Route path='/' exact render={() =>
 					<Tabs defaultActiveKey="unanswered">
-						<Tab eventKey="unanswered" title="Unanswered Questions">
+						<Tab
+							eventKey="unanswered"
+							title="Unanswered Questions">
+
 							<QuestionsList
 								questions={unansweredQuestions}
 								users={users} />
 						</Tab>
-						<Tab eventKey="answered" title="Answered Questions">
+						<Tab 
+							eventKey="answered"
+							title="Answered Questions">
+
 							<QuestionsList
 								questions={answeredQuestions} 
 								users={users} />
@@ -28,6 +35,7 @@ class Home extends Component {
 					</Tabs>
 				} />
 				<Route path='/questions/:id' component={Question} />
+				<Route path='/add' component={AddQuestion} />
 			</Switch>
 		);
 	}

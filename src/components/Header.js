@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Image, Nav, Navbar } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom'
 
 import { signOut } from '../actions/authedUser';
 
@@ -15,7 +16,7 @@ class Header extends Component {
 
 		return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand>
                     <Image
                         src={user.avatarURL}
                         className="d-inline-block align-top"
@@ -26,9 +27,22 @@ class Header extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/add">New Question</Nav.Link>
-                        <Nav.Link href="/leaderboard">Leaderboard</Nav.Link>
+                        <NavLink
+                            exact
+                            className="nav-link"
+                            to="/">
+                            Home
+                        </NavLink>
+                        <NavLink
+                            className="nav-link"
+                            to="/add">
+                            New Question
+                        </NavLink>
+                        <NavLink 
+                            className="nav-link"
+                            to="/leaderboard">
+                            Leaderboard
+                        </NavLink>
                     </Nav>
                     <Button variant="outline-success" onClick={this.handleSignOut}>Sign Out</Button>
                 </Navbar.Collapse>

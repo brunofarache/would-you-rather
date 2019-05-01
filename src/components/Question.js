@@ -6,7 +6,7 @@ import { handleVote } from "../actions/questions";
 
 class Question extends Component {
 	state = {
-		vote: 'one'
+		vote: 'optionOne'
 	}
 
 	handleVote = (event) => {
@@ -17,7 +17,7 @@ class Question extends Component {
 	}
 
 	handleChange = (event) => {
-		this.setState({ vote: event.currentTarget.id })
+		this.setState({ vote: event.currentTarget.id });
 	}
 
 	render() {
@@ -28,15 +28,14 @@ class Question extends Component {
 				<Card.Header>{author.name} asks:</Card.Header>
 				<Card.Body>
 					<Card.Title>Would You Rather?</Card.Title>
-					<Form
-						 onSubmit={event => this.handleVote(event)}>
-
+					<Form onSubmit={event => this.handleVote(event)}>
 						<Form.Check 
 							type='radio'
 							name='answer'
 							id='optionOne'
 							onChange={event => this.handleChange(event)}
 							label={question.optionOne.text} />
+
 						<Form.Check 
 							type='radio'
 							name='answer'
