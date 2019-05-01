@@ -2,18 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Card, Form } from 'react-bootstrap';
 
+import QuestionsStats from './QuestionStats'
 import { handleVote } from "../actions/questions";
 
 class Question extends Component {
-	state = {
-		vote: 'optionOne'
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			vote: 'optionOne',
+			showStats: props.showStats
+		};
 	}
 
 	handleVote = (event) => {
 		event.preventDefault();
-		const { authedUser, dispatch, history, question } = this.props;
+		const { authedUser, dispatch, question } = this.props;
 		dispatch(handleVote(authedUser, question.id, this.state.vote));
-		history.push('/');
+		this.setState({ showStats: true });
 	}
 
 	handleChange = (event) => {
@@ -21,7 +27,11 @@ class Question extends Component {
 	}
 
 	render() {
-		const { author, question } = this.props;
+		const { authedUser, author, question } = this.props;
+
+		if (this.state.showStats) {
+			return <QuestionsStats authedUser={authedUser} author={author} question={question} />
+		}
 
 		return (
 			<Card style={{ width: '18rem' }}>
@@ -55,11 +65,13 @@ class Question extends Component {
 function mapStateToProps({ authedUser, questions, users }, { match }) {
 	const question = questions[match.params.id];
 	const author = users[question.author];
+	const showStats = question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser);
 
 	return {
 		authedUser,
 		question,
-		author
+		author,
+		showStats
 	}
 }
 
