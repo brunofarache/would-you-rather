@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Image, Nav, Navbar } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 
 import { signOut } from '../actions/authedUser';
 
 class Header extends Component {
     handleSignOut = () => {
-        const { dispatch } = this.props;
-		dispatch(signOut());
+        const { dispatch, history } = this.props;
+        dispatch(signOut());
+        history.push('/');
     }
 
     render() {
@@ -57,4 +58,4 @@ function mapStateToProps({ authedUser, users }) {
 	}
 }
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));
