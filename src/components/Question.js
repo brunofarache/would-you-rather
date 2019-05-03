@@ -34,28 +34,36 @@ class Question extends Component {
 		}
 
 		return (
-			<Card style={{ width: '18rem' }}>
+			<Card style={{ width: '425px' }}>
 				<Card.Header>{author.name} asks:</Card.Header>
 				<Card.Body>
-					<Card.Title>Would You Rather?</Card.Title>
-					<Form onSubmit={event => this.handleVote(event)}>
-						<Form.Check 
-							type='radio'
-							name='answer'
-							id='optionOne'
-							onChange={event => this.handleChange(event)}
-							label={question.optionOne.text} />
+					<div style={{ float: 'left' }}>
+						<img
+							alt="avatar"
+							style={{ height: '178px', width: '178px'}}
+							src={author.avatarURL} />
+					</div>
+					<div style={{ float: 'right' }}>
+						<Card.Title>Would You Rather?</Card.Title>
+						<Form onSubmit={event => this.handleVote(event)}>
+							<Form.Check 
+								type='radio'
+								name='answer'
+								id='optionOne'
+								onChange={event => this.handleChange(event)}
+								label={question.optionOne.text} />
 
-						<Form.Check 
-							type='radio'
-							name='answer'
-							id='optionTwo'
-							onChange={event => this.handleChange(event)}
-							label={question.optionTwo.text} />
-						<Button variant="primary" type="submit">
-							Vote
-						</Button>
-					</Form>
+							<Form.Check 
+								type='radio'
+								name='answer'
+								id='optionTwo'
+								onChange={event => this.handleChange(event)}
+								label={question.optionTwo.text} />
+							<Button variant="primary" type="submit">
+								Vote
+							</Button>
+						</Form>
+					</div>
 				</Card.Body>
 			</Card>
 		);
