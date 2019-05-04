@@ -7,14 +7,22 @@ class Leaderboard extends Component {
 		return (
 			<div>
 				{this.props.users.map(user => (
-					<Card style={{ width: '18rem' }}>
+					<Card style={{ width: '425px' }}>
 						<Card.Header>{user.name}</Card.Header>
 						<Card.Body>
-							<Card.Title>Total Score: {user.score}</Card.Title>
-							<Card.Text>
-								Answered Questions: {user.answeredQuestions} <br />
-								Created Questions: {user.createdQuestions}
-							</Card.Text>
+							<div style={{ float: 'left' }}>
+								<img
+									alt="avatar	"
+									style={{ height: '178px', width: '178px'}}
+									src={user.avatarURL} />
+							</div>
+							<div style={{ float: 'right' }}>
+								<Card.Title>Total Score: {user.score}</Card.Title>
+								<Card.Text>
+									Answered Questions: {user.answeredQuestions} <br />
+									Created Questions: {user.createdQuestions}
+								</Card.Text>
+							</div>
 						</Card.Body>
 					</Card>
 				))}
