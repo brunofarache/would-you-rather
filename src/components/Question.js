@@ -29,6 +29,10 @@ class Question extends Component {
 	render() {
 		const { authedUser, author, question } = this.props;
 
+		if (question == null) {
+			return <h2>Poll does not exist.</h2>
+		}
+
 		if (this.state.showStats) {
 			return <QuestionsStats authedUser={authedUser} author={author} question={question} />
 		}
@@ -39,7 +43,7 @@ class Question extends Component {
 				<Card.Body>
 					<div style={{ float: 'left' }}>
 						<img
-							alt="avatar"
+							alt="avatar	"
 							style={{ height: '178px', width: '178px'}}
 							src={author.avatarURL} />
 					</div>
@@ -72,6 +76,13 @@ class Question extends Component {
 
 function mapStateToProps({ authedUser, questions, users }, { match }) {
 	const question = questions[match.params.id];
+
+	if (!question) {
+		return {
+			question: null
+		}
+	}
+
 	const author = users[question.author];
 	const showStats = question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser);
 
