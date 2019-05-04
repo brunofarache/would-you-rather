@@ -17,11 +17,13 @@ class QuestionsStats extends Component {
 				<Card.Header>Asked by {author.name}</Card.Header>
 				<Card.Body>
 					<Card.Title>Results:</Card.Title>
+					<strong>Option 1:</strong><br />
 					{optionOne.text} {votedOne && <Badge variant="success">Your Vote</Badge>}
 					<ProgressBar
 						style={{height: '35px'}}
 						now={onePercentage}
 						label={`${onePercentage}% (${oneVotes} out of ${total})`} />
+					<strong>Option 2:</strong><br />
 					{optionTwo.text} {votedTwo && <Badge variant="success">Your Vote</Badge>}
 					<ProgressBar
 						style={{height: '35px'}}
