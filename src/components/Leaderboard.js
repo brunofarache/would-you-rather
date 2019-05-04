@@ -7,7 +7,7 @@ class Leaderboard extends Component {
 		return (
 			<div>
 				{this.props.users.map(user => (
-					<Card style={{ width: '425px' }}>
+					<Card style={{ width: '425px' }} key={user.id}>
 						<Card.Header>{user.name}</Card.Header>
 						<Card.Body>
 							<div style={{ float: 'left' }}>
