@@ -17,6 +17,7 @@ class SignIn extends Component {
                 <CardDeck>
                     {Object.values(users).map((user) => (
                         <Card
+                            className={'card-action'}
                             key={user.id}
                             onClick={() => this.handleSignIn(user.id)}>
 
