@@ -21,7 +21,6 @@ class AddQuestion extends Component {
 
 	handleChange = (event) => {
 		this.setState({
-			...this.state,
 			[event.currentTarget.id]: event.currentTarget.value
 		});
 	}

@@ -6,8 +6,7 @@ import { signIn } from '../actions/authedUser';
 
 class SignIn extends Component {
     handleSignIn = (userId) => {
-        const { dispatch } = this.props;
-		dispatch(signIn(userId));
+		this.props.signIn(userId);
     }
 
     render() {
@@ -33,10 +32,16 @@ class SignIn extends Component {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return({
+        signIn: (userId) => {dispatch(signIn(userId))}
+    })
+}
+
 function mapStateToProps({ users }) {
 	return {
 		users
 	}
 }
 
-export default connect(mapStateToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

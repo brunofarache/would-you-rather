@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the second project for the React Nanodegree course.
+
+It's a "Would You Rather" game, users can create polls and those who create or answer more polls are the winners.
+
+Run `npm install` to install dependencies before running it.
 
 ## Available Scripts
 
